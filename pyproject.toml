@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dallasan-kit"
+version = "1.0.0"
+description = "Shared safety code for the thedallasan apps: fsguard, verified-TLS mail, the API-cap alert"
+requires-python = ">=3.10"
+# Stdlib only. `anthropic` is imported lazily by api_cap and is the calling app's
+# dependency, not this package's: an app that never calls a model must not have
+# to install the SDK to harden a directory.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
